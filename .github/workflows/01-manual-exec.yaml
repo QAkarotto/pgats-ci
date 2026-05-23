@@ -9,7 +9,6 @@ name: 'Execução Manual SQA'
 on:
   workflow_dispatch:
 
-
 # Jobs - tarefas dentro da pipeline
 
 jobs:
