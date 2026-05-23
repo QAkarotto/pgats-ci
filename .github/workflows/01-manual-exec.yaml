@@ -1,7 +1,7 @@
 # CI de nível 01 - Disparo manual através do GitHub Actions
 
 # Nome da pipeline
-name: 'Execução Manual SantosQA.com'
+name: 'Execução Manual SQA'
 
 # Gatilhos / triggers - regras de disparo
 # Gatilho manual = workflow_dispatch
