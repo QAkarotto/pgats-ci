@@ -1,0 +1,45 @@
+# CI de nível 01 - Disparo manual através do GitHub Actions
+
+# Nome da pipeline
+name: 'Execução Manual SantosQA.com'
+
+# Gatilhos / triggers - regras de disparo
+# Gatilho manual = workflow_dispatch
+
+on:
+  workflow_dispatch:
+
+
+# Jobs - tarefas dentro da pipeline
+
+jobs:
+  e2e-tests:
+    # maquina onde o job vai rodar
+    runs-on: ubuntu-latest
+
+    # Passos do job
+    steps:
+      # clone do projeto
+      - uses: actions/checkout@v4
+
+      # Configuração do Node.js
+      - name: Configurando Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.x'
+
+      # instalaçao do Yarn
+      - name: Instalando Yarn
+        run: npm install -g yarn
+
+      # Instalação das dependências
+      - name: Instalando dependências
+        run: yarn install
+
+      # Instalação dos Browsers do Playwright
+      - name: Instalando Browsers do Playwright
+        run: yarn playwright install
+
+      # Execução dos testes
+      - name: Execução dos testes E2E
+        run: yarn run e2e
