@@ -28,9 +28,9 @@ jobs:
               with:
                   node-version: 24.x
 
-            # instalação do Yarn
-            - name: Instalando Yarn
-              run: npm install -g yarn
+            # ativar Corepack para gerenciar versão do Yarn
+            - name: Ativando Corepack
+              run: corepack enable
             
             #   instalação das dependências
             - name: Instalando dependências
