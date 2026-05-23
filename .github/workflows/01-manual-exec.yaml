@@ -7,7 +7,7 @@ name: "Execução Manual"
 # gatilho manual = workflow_dispach
 
 on:
-    workflow_dispach:
+    workflow_dispatch:
 
 # tarefas dentro da pipeline = jobs
 
