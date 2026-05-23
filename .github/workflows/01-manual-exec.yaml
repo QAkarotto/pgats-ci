@@ -32,6 +32,10 @@ jobs:
             - name: Ativando Corepack
               run: corepack enable
             
+            # regenerar lockfile com versões corretas
+            - name: Regenerando lockfile
+              run: yarn install --refresh-lockfile
+            
             #   instalação das dependências
             - name: Instalando dependências
               run: yarn

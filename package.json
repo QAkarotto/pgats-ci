@@ -22,7 +22,7 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.47.2",
-    "@stryker-mutator/core": "6.1.2",
+    "@stryker-mutator/core": "^8.7.0",
     "@stryker-mutator/jest-runner": "^8.5.0",
     "@stryker-mutator/karma-runner": "^8.6.0",
     "@types/jest": "^29.5.11",
