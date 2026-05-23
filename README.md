@@ -33,8 +33,12 @@
     ```shell
     yarn run e2e
     ```
-13. Execute a aplicação com `yarn start`
-14. Acesse a aplicação publicada [neste link](https://pgats-ci-example.netlify.app)
+13. Execute o comando abaixo para ver o report
+   ```bash
+   yarn playwright show-report
+   ```
+14. Execute a aplicação com `yarn start`
+15. Acesse a aplicação publicada [neste link](https://pgats-ci-example.netlify.app)
 
 ---
 
