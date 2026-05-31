@@ -15,7 +15,7 @@ jobs:
     #nome do job
     e2e-tests:
         # maquina onde o job vai rodar
-        runs-on: ubuntu-latest
+        runs-on: self-hosted
 
         # passos do job
         steps:
@@ -42,3 +42,11 @@ jobs:
             # executar os testes e2e
             - name: Executando testes e2e
               run: yarn run e2e
+
+            # upload do relatório HTML gerado pelo Playwright 
+            - name: Upload do relatório Playwright 
+              uses: actions/upload-artifact@v4 
+              if: always() 
+              with: 
+                  name: playwright-report 
+                  path: playwright-report/ 
