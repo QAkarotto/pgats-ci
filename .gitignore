@@ -6,3 +6,5 @@ reports
 /blob-report/
 /playwright/.cache/
 results.xml
+allure-results/
+allure-report/

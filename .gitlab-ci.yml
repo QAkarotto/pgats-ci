@@ -1,0 +1,22 @@
+image: mcr.microsoft.com/playwright:v1.60.0-noble
+
+stages:
+  - test
+
+e2e-tests:
+  stage: test
+  before_script:
+    - apt-get update
+    - apt-get install -y openjdk-17-jre
+    - java -version
+  script:
+    - yarn install
+    - yarn run e2e
+    - yarn run allure:generate
+  artifacts:
+    when: always
+    expire_in: 7 days
+    paths:
+      - allure-results/
+      - allure-report/
+      - test-results/
