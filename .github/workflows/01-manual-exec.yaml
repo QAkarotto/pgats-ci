@@ -1,7 +1,7 @@
 # CI de Nível 01 - Disparo manual através de clique.
 
 # nome da pipeline
-name: 'Execução Manual'
+name: 'Execução Manual e PR Review'
 
 # gatilhos / triggers - regras de disparo
 # gatilho manual= workflow dispatch
@@ -9,10 +9,57 @@ name: 'Execução Manual'
 on:
     workflow_dispatch:
 
+    pull_request:
+        types:
+        - opened
+        - synchronize
+        - reopened
+
 # tarefas dentro da pipeline = jobs
 jobs: 
+    pr-agent:
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'
+
+    runs-on: ubuntu-latest
+
+    permissions: 
+        contents: read 
+        pull-requests: write 
+        issues: write
+
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+
+        - name: Gerar descrição do PR
+          uses: Codium-ai/pr-agent@main
+          env:
+            OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            command: describe
+
+        - name: Revisar PR
+          uses: Codium-ai/pr-agent@main
+          env:
+            OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            command: review
+
+        - name: Sugerir melhorias
+          uses: Codium-ai/pr-agent@main
+          env:
+            OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            command: improve
+
+
+
     # nome do job
     e2e-tests:
+        if: github.event_name == 'workflow_dispatch'
         # maquina onde o job vai rodar
         runs-on: ubuntu-latest
 
