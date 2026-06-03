@@ -1,0 +1,20 @@
+# Nome da pipeline
+stages:
+  - e2e # Adicionando um estágio para os testes e2e
+
+e2e-tests:  # Nome do job
+  stage: e2e
+  image: node:24 # Usando uma imagem de Node.js versão 24
+  script:
+    # Passos do job
+    - echo "Clonando o projeto..."
+    - npm install -g yarn # Instalação do Yarn
+    - echo "Instalando dependências..."
+    - yarn # Instalação das dependências
+    - echo "Instalando Browsers do Playwright..."
+    - yarn playwright install # Instalação dos Browsers do Playwright
+    - echo "Executando testes e2e..."
+    - yarn run e2e # Execução dos testes e2e
+  artifacts: # Armazenando artefatos
+    paths:
+      - test-results/results.xml # Publicando o relatório de testes
