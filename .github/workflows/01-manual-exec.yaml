@@ -1,133 +1,139 @@
 # CI de Nível 01 - Disparo Manual através de clique
 # Versão atualizada com:
 # - Self-Hosted Runner (Docker local)
-# - Relatório Allure 
+# - Relatório Allure
 # - Notificação por e-mail ao final
 
 name: 'Execução Manual SQA'
 
 # Gatilho: disparo manual pelo botão no GitHub
 on:
-    workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
-    e2e-tests:
-        # ------------------------------------------------
-        # Para usar o runner do GitHub: Utilize "ubuntu-latest" e 
-        # Para usar o runner self-hosted: Utilize "self-hosted"
-        # ------------------------------------------------
-        runs-on: self-hosted
+  e2e-tests:
+    # ------------------------------------------------
+    # Para usar o runner do GitHub: Utilize "ubuntu-latest" e
+    # Para usar o runner self-hosted: Utilize "self-hosted"
+    # ------------------------------------------------
+    runs-on: self-hosted
 
-        steps:
-            # 1. Aqui ele Clona o projeto
-            - uses: actions/checkout@v4
+    steps:
+      # 1. Aqui ele Clona o projeto
+      - uses: actions/checkout@v4
 
-            # 2. Nesse passoInstala o Node.js 24
-            - uses: actions/setup-node@v4
-              with:
-                  node-version: 24.x
+      # 2. Nesse passoInstala o Node.js 24
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
 
-            # 3. Ativa Corepack para usar o Yarn 3
-            - name: Ativando Corepack
-              run: corepack enable
+      # 3. Ativa Corepack para usar o Yarn 3
+      - name: Ativando Corepack
+        run: corepack enable
 
-            # 4. Regenera o lockfile (para garantir as versões corretas)
-            - name: Regenerando lockfile
-              run: yarn install --refresh-lockfile
+      # 4. Regenera o lockfile (para garantir as versões corretas)
+      - name: Regenerando lockfile
+        run: yarn install --refresh-lockfile
 
-            # 5. Aqui estou snstalando as dependências do projeto
-            - name: Instalando dependências
-              run: yarn
+      # 5. Aqui estou snstalando as dependências do projeto
+      - name: Instalando dependências
+        run: yarn
 
-            # 6. Instala os navegadores do Playwright
-            - name: Instalando Browsers do Playwright
-              run: yarn playwright install --with-deps chromium
+      # 6. Instala os navegadores do Playwright
+      - name: Instalando Browsers do Playwright
+        run: yarn playwright install --with-deps chromium
 
-            # ------------------------------------------------
-            # Report mais visual: Instalação dop Allure para gerar relatório
-            # allure-playwright = plugin que conecta Playwright ao Allure
-            # ------------------------------------------------
-            - name: Instalando Allure Playwright
-              run: yarn add -D allure-playwright
+      # ------------------------------------------------
+      # Report mais visual: Instalação dop Allure para gerar relatório
+      # allure-playwright = plugin que conecta Playwright ao Allure
+      # ------------------------------------------------
+      - name: Instalando Allure Playwright
+        run: yarn add -D allure-playwright
 
-            # 7. Executa os testes e2e
-            #    continue-on-error: true  → a pipeline não para se os testes falharem
-            #    Este passo é ideal para que o relatório e o e-mail ainda sejam enviados
-            - name: Executando testes e2e
-              id: run_tests
-              continue-on-error: true
-              run: yarn run e2e
-              env:
-                  # Variável usada pelo playwright.config.js para saber que está em CI
-                  CI: true
+      - name: Instalando Allure CLI
+        run: npm install -g allure-commandline
 
-            # ------------------------------------------------
-            # Resultado: Gera o relatório Allure a partir dos resultados
-            # ------------------------------------------------
-            - name: Gerando relatório Allure
-              if: always()   # Roda mesmo se os testes falharam
-              run: npx allure generate allure-results --clean -o allure-report
+      # 7. Executa os testes e2e
+      #    continue-on-error: true  → a pipeline não para se os testes falharem
+      #    Este passo é ideal para que o relatório e o e-mail ainda sejam enviados
+      - name: Executando testes e2e
+        id: run_tests
+        continue-on-error: true
+        run: yarn run e2e
+        env:
+          # Variável usada pelo playwright.config.js para saber que está em CI
+          CI: true
 
-            # 8. Publica o relatório Allure como artefato no GitHub
-            #    Depois de rodar, aparece na aba "Artifacts" da pipeline
-            - name: Publicando relatório Allure
-              if: always()
-              uses: actions/upload-artifact@v4
-              with:
-                  name: allure-report
-                  path: allure-report/
-                  retention-days: 7   # Fica disponível por 7 dias (gratuito)
+      # ------------------------------------------------
+      # Resultado: Gera o relatório Allure a partir dos resultados
+      # ------------------------------------------------
+      - name: Gerando relatório Allure
+        if: always() # Roda mesmo se os testes falharam
+        run: allure generate allure-results --clean -o allure-report
 
-            # Publica também o relatório HTML padrão do Playwright
-            - name: Publicando relatório HTML do Playwright
-              if: always()
-              uses: actions/upload-artifact@v4
-              with:
-                  name: playwright-report
-                  path: playwright-report/
-                  retention-days: 7
+      # 8. Publica o relatório Allure como artefato no GitHub
+      #    Depois de rodar, aparece na aba "Artifacts" da pipeline
+      - name: Publicando relatório Allure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report/
+          retention-days: 7 # Fica disponível por 7 dias (gratuito)
 
-            # ------------------------------------------------
-            # Disparo de email: Envia e-mail com o resultado
-            # Usa o action dawidd6/action-send-mail (gratuito)
-            # ------------------------------------------------
-            - name: Enviando e-mail com resultado
-              if: always()
-              uses: dawidd6/action-send-mail@v3
-              with:
-                  # Servidor SMTP (usando Gmail como exemplo)
-                  server_address: smtp.gmail.com
-                  server_port: 465
-                  secure: true
+      # Publica também o relatório HTML padrão do Playwright
+      - name: Publicando relatório HTML do Playwright
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
 
-                  # Credenciais guardadas como Secrets no GitHub
-                  username: ${{ secrets.EMAIL_USERNAME }}
-                  password: ${{ secrets.EMAIL_PASSWORD }}
+      # ------------------------------------------------
+      # Disparo de email: Envia e-mail com o resultado
+      # Usa o action dawidd6/action-send-mail (gratuito)
+      # ------------------------------------------------
+      - name: Enviando e-mail com resultado
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          # Servidor SMTP (usando Gmail como exemplo)
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
 
-                  # Remetente e destinatário
-                  from: "Pipeline SQA <${{ secrets.EMAIL_USERNAME }}>"
-                  to: ${{ secrets.EMAIL_DESTINATARIO }}
+          # Credenciais guardadas como Secrets no GitHub
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
 
-                  # Assunto do e-mail muda conforme resultado dos testes
-                  subject: >
-                      ${{ steps.run_tests.outcome == 'success' && '✅ Testes APROVADOS' || '❌ Testes REPROVADOS' }}
-                      - Pipeline ${{ github.run_number }}
+          # Remetente e destinatário
+          from: 'Pipeline SQA <${{ secrets.EMAIL_USERNAME }}>'
+          to: ${{ secrets.EMAIL_DESTINATARIO }}
 
-                  # Corpo do e-mail em HTML
-                  html_body: |
-                      <h2>Resultado da Pipeline SQA</h2>
-                      <table border="1" cellpadding="6" cellspacing="0">
-                        <tr><td><b>Repositório</b></td><td>${{ github.repository }}</td></tr>
-                        <tr><td><b>Pipeline #</b></td><td>${{ github.run_number }}</td></tr>
-                        <tr><td><b>Branch</b></td><td>${{ github.ref_name }}</td></tr>
-                        <tr><td><b>Disparado por</b></td><td>${{ github.actor }}</td></tr>
-                        <tr><td><b>Resultado dos testes</b></td>
-                            <td><b>${{ steps.run_tests.outcome == 'success' && '✅ PASSOU' || '❌ FALHOU' }}</b></td></tr>
-                      </table>
-                      <br>
-                      <p>
-                        📊 <a href="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}">
-                          Clique aqui para ver o relatório completo
-                        </a>
-                      </p>
-                      <p><small>Gerado automaticamente pela pipeline do GitHub Actions</small></p>
+          # Assunto do e-mail muda conforme resultado dos testes
+          subject: >
+            ${{ steps.run_tests.conclusion == 'success' && '✅ Testes APROVADOS' || '❌ Testes REPROVADOS' }}
+            - Pipeline ${{ github.run_number }}
+
+          html_body: |
+            <h2>Resultado da Pipeline SQA</h2>
+            <table border="1" cellpadding="6" cellspacing="0">
+              <tr><td><b>Repositório</b></td><td>${{ github.repository }}</td></tr>
+              <tr><td><b>Pipeline #</b></td><td>${{ github.run_number }}</td></tr>
+              <tr><td><b>Branch</b></td><td>${{ github.ref_name }}</td></tr>
+              <tr><td><b>Disparado por</b></td><td>${{ github.actor }}</td></tr>
+
+              <tr><td><b>Resultado dos testes</b></td>
+                  <td><b>${{ steps.run_tests.conclusion == 'success' && '✅ PASSOU' || '❌ FALHOU' }}</b></td></tr>
+
+              <tr><td><b>Status geral da pipeline</b></td>
+                  <td><b>${{ job.status == 'success' && '✅ OK' || '⚠️ ATENÇÃO: ' }}${{ job.status }}</b></td></tr>
+            </table>
+            <br>
+            <p>
+              📊 <a href="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}">
+                Clique aqui para ver o relatório completo
+              </a>
+            </p>
+            <p><small>Gerado automaticamente pela pipeline do GitHub Actions</small></p>
