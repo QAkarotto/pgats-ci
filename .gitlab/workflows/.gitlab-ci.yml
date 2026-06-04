@@ -1,0 +1,39 @@
+# 1. Definição global das etapas do pipeline
+stages:
+  - setup
+  - test
+  - deploy
+
+# 2. Definição de variáveis globais (opcional)
+variables:
+  ENVIRONMENT: "production"
+
+# Job 1: Etapa de Setup (Instalação)
+install-dependencies:
+  stage: setup
+  image: node:20-alpine
+  script:
+    - echo "Instalando dependências do projeto..."
+    - npm install --legacy-peer-deps
+  artifacts:
+    expire_in: 1 hour
+    paths:
+      - node_modules/
+
+# Job 2: Etapa de Testes (Roda após o setup terminar com sucesso)
+run-tests:
+  stage: test
+  image: node:20-alpine
+  script:
+    - echo "Executando testes unitários..."
+    - npm test
+
+# Job 3: Etapa de Deploy (Só roda se os testes passarem e for na branch 'main')
+deploy-to-production:
+  stage: deploy
+  image: alpine:latest
+  script:
+    - echo "Iniciando o deploy para o ambiente de $ENVIRONMENT..."
+    - echo "Conectando ao servidor e atualizando os arquivos..."
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
