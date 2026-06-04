@@ -1,4 +1,5 @@
 # CI de Nível 01 - Disparo Manual através de clique
+runs-on: [self-hosted, Windows, X64]
 
 # nome da pipeline
 name: "Execução Manual"
