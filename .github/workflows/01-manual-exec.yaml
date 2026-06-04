@@ -50,6 +50,12 @@ jobs:
       - name: Instalando Allure Playwright
         run: yarn add -D allure-playwright
 
+      - name: Instalando Java #(necessário para o Allure CLI)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
       - name: Instalando Allure CLI
         run: npm install -g allure-commandline
 
