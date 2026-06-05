@@ -1,0 +1,17 @@
+image: node:24
+
+stages:
+  - e2e
+
+cache:
+  paths:
+    - node_modules/
+
+e2e-tests:
+  stage: e2e
+  when: manual
+
+  script:
+    - yarn
+    - yarn playwright install --with-deps
+    - yarn run e2e 
