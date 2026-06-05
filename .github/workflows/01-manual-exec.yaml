@@ -42,3 +42,12 @@ jobs:
             # executar os testes e2e
             - name: Executando testes e2e
               run: yarn run e2e
+            
+            # upload do relatório do Playwright
+            - name: Upload do relatório Playwright
+              uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                name: playwright-report
+                path: playwright-report/
+                retention-days: 30  
