@@ -10,9 +10,11 @@ on:
     workflow_dispatch:
     schedule:
       # Cronograma de execução
-      # Primeiro numero é minuto, Segundo é hora, Terceiro - dia do mês, 
-      # Quarto - mês, Quinto - dia da semana
-      - cron: '*/6 * * * *'
+      # Timezone: América/São_Paulo (UTC-3)
+      # Horário: 21:56 (horário de Brasília/São Paulo)
+      # Conversão para UTC: 21:56 - 03:00 = 00:56 UTC
+      # Formato cron: minuto hora dia_mês mês dia_semana
+      - cron: '56 0 * * *'
 
 permissions:
     contents: read
