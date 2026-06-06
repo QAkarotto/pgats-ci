@@ -11,7 +11,7 @@ on:
     schedule:
       # Executa a cada hora (em UTC)
       # Validação de timezone feita em tempo de execução no primeiro step
-      - cron: '0 * * * *'
+      - cron: '3 * * * *'
 
 permissions:
     contents: read
@@ -27,19 +27,6 @@ jobs:
 
         #passos do job
         steps:
-            # Validar horário em São Paulo (21:56)
-            - name: Validar horário (São Paulo/Brasília)
-              env:
-                TZ: America/Sao_Paulo
-              run: |
-                HORA=$(date +%H:%M)
-                echo "Hora atual em São Paulo: $HORA"
-                if [[ "$HORA" != "22:00" ]]; then
-                  echo "Não é 22:00 em São Paulo. Abortando execução."
-                  exit 1
-                fi
-                echo "✓ Horário correto! Prosseguindo com os testes..."
-
             #clone do projeto
             - uses: actions/checkout@v4
 
