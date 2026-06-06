@@ -14,6 +14,10 @@ on:
       # Quarto - mês, Quinto - dia da semana
       - cron: '*/1 * * * *'
 
+permissions:
+    contents: read
+    actions: read
+
 # tarefas dentro da pipeline = jobs
 
 jobs:
