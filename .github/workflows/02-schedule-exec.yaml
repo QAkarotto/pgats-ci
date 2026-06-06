@@ -9,12 +9,9 @@ name: "Schedule Execution"
 on:
     workflow_dispatch:
     schedule:
-      # Cronograma de execução
-      # Timezone: América/São_Paulo (UTC-3)
-      # Horário: 21:56 (horário de Brasília/São Paulo)
-      # Conversão para UTC: 21:56 - 03:00 = 00:56 UTC
-      # Formato cron: minuto hora dia_mês mês dia_semana
-      - cron: '56 0 * * *'
+      # Executa a cada hora (em UTC)
+      # Validação de timezone feita em tempo de execução no primeiro step
+      - cron: '0 * * * *'
 
 permissions:
     contents: read
@@ -30,6 +27,19 @@ jobs:
 
         #passos do job
         steps:
+            # Validar horário em São Paulo (21:56)
+            - name: Validar horário (São Paulo/Brasília)
+              env:
+                TZ: America/Sao_Paulo
+              run: |
+                HORA=$(date +%H:%M)
+                echo "Hora atual em São Paulo: $HORA"
+                if [[ "$HORA" != "22:00" ]]; then
+                  echo "Não é 22:00 em São Paulo. Abortando execução."
+                  exit 1
+                fi
+                echo "✓ Horário correto! Prosseguindo com os testes..."
+
             #clone do projeto
             - uses: actions/checkout@v4
 
