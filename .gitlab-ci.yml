@@ -1,0 +1,50 @@
+# CI de Nível 01 - Disparo Manual, por Schedule e em Alterações na Master
+# Versão GitLab CI/CD do arquivo 01-manual-exec.yaml
+
+stages:
+  - test
+
+# Job de testes e2e
+e2e-tests:
+  stage: test
+  image: node:24
+  
+  # Disparadores: manual, push na master, ou agendado
+  only:
+    - master
+    - schedules
+    - web
+  
+  script:
+    # Instalação das dependências
+    - yarn install
+    
+    # Instalação dos Browsers do Playwright
+    - yarn playwright install
+    
+    # Instalação de dependências do sistema necessárias para Playwright
+    - yarn playwright install-deps
+    
+    # Executar os testes e2e
+    - yarn run e2e
+  
+  # Artefatos a manter após execução
+  artifacts:
+    when: always
+    paths:
+      - playwright-report/
+      - test-results/
+    expire_in: 30 days
+  
+  # Cache para acelerar builds subsequentes
+  cache:
+    paths:
+      - node_modules/
+      - .yarn/cache/
+
+# NOTA: Para configurar execuções agendadas (schedule):
+# 1. Acesse: Project > CI/CD > Schedules
+# 2. Clique em "New schedule"
+# 3. Configure a frequência desejada (cron syntax)
+# 4. Selecione a branch: master
+# 5. O job será executado automaticamente no horário configurado

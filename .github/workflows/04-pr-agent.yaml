@@ -1,0 +1,31 @@
+# CI de Nível 04 - PR Agent para análise automática de Pull Requests
+
+name: "PR Agent Analysis"
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  pull_request_review_comment:
+    types: [created]
+  issue_comment:
+    types: [created, edited]
+
+jobs:
+  pr-agent:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+    
+    steps:
+      - name: PR Agent
+        uses: Codium-ai/pr-agent@main
+        env:
+          # Token do GitHub para autenticação
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+          # Configurações do PR Agent
+          # Descomente para usar variáveis de ambiente adicionais
+          # PR_AGENT_API_KEY: ${{ secrets.PR_AGENT_API_KEY }}
