@@ -2,7 +2,7 @@ export class Router {
   #global;
   /** @type {Set<RouteCallback>} */
   #routerSubscriptions = new Set();
-
+  /***teste */
   /** @param {Pick<globalThis, 'addEventListener'> & { location: { hash: string }}} win */
   constructor(win = window) {
     this.#global = win;
