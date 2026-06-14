@@ -9,7 +9,7 @@ on:
     schedule:
       #cronograma de execução
       #1- minutos, 2-hora, 3-dia do mês, 4-mês, 5-dia da semana (quando não a informação substitui por asterísco)
-      - cron: '30 17 * * 0' #Rodará apenas no dia e horário especificado
+      - cron: '*/5 * * * *' #Rodará apenas no dia e horário especificado
     
 #tarefas dentro da pipeline = jobs
 jobs:
