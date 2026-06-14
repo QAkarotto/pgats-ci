@@ -1,7 +1,7 @@
 {
-  "uuid": "83143382-a795-4047-a66a-d27e663d75a1",
-  "name": "user above height should not be allowed",
-  "historyId": "f1f24d5d50f37ecf1fe45ecba9496efd:5bd835b0d6b1d4ada3b9f0db936e82c8",
+  "uuid": "539fc97f-bed3-47c1-b373-54e77324c90d",
+  "name": "user should be able to ride",
+  "historyId": "e6afd36bd0c6dca2dcd33b7b3755b7bf:5bd835b0d6b1d4ada3b9f0db936e82c8",
   "status": "passed",
   "statusDetails": {},
   "stage": "finished",
@@ -29,17 +29,17 @@
                   "attachments": [],
                   "parameters": [],
                   "name": "Launch browser",
-                  "start": 1780271524319,
-                  "uuid": "6e028ed0-6b78-4329-9be7-82025da1a908",
-                  "stop": 1780271524751
+                  "start": 1781472488300,
+                  "uuid": "29b96696-5d73-4dd8-947f-de5e59253ac2",
+                  "stop": 1781472490170
                 }
               ],
               "attachments": [],
               "parameters": [],
               "name": "Fixture \"browser\"",
-              "start": 1780271524314,
-              "uuid": "fb6dfaca-9069-447f-b6f0-dc34cfd4458b",
-              "stop": 1780271524752
+              "start": 1781472488296,
+              "uuid": "717b7866-84f5-4d4b-a057-15103f6a25b9",
+              "stop": 1781472490171
             },
             {
               "status": "passed",
@@ -54,17 +54,17 @@
                   "attachments": [],
                   "parameters": [],
                   "name": "Create context",
-                  "start": 1780271524756,
-                  "uuid": "114624f2-8627-4d6d-9a02-9ed479d5f333",
-                  "stop": 1780271524786
+                  "start": 1781472490175,
+                  "uuid": "5c56dd08-4942-4fb9-804d-ea403ecf9dec",
+                  "stop": 1781472490192
                 }
               ],
               "attachments": [],
               "parameters": [],
               "name": "Fixture \"context\"",
-              "start": 1780271524754,
-              "uuid": "3175937d-d1e7-4306-a496-428b4d28f999",
-              "stop": 1780271524787
+              "start": 1781472490173,
+              "uuid": "2915665d-b3ba-4940-bae9-3d9734a0145e",
+              "stop": 1781472490193
             },
             {
               "status": "passed",
@@ -79,17 +79,17 @@
                   "attachments": [],
                   "parameters": [],
                   "name": "Create page",
-                  "start": 1780271524791,
-                  "uuid": "3312d307-6d8e-42ab-af45-c8796aee01d2",
-                  "stop": 1780271525573
+                  "start": 1781472490195,
+                  "uuid": "6f651d78-def4-4359-9a5b-3d00a04075b1",
+                  "stop": 1781472490617
                 }
               ],
               "attachments": [],
               "parameters": [],
               "name": "Fixture \"page\"",
-              "start": 1780271524788,
-              "uuid": "e8f0345d-92b3-4f80-8dba-c7eac197e8bd",
-              "stop": 1780271525573
+              "start": 1781472490194,
+              "uuid": "af50fc55-9e3f-41ee-94e0-24c337586971",
+              "stop": 1781472490617
             },
             {
               "status": "passed",
@@ -99,25 +99,25 @@
               "attachments": [],
               "parameters": [],
               "name": "Navigate to \"/\"",
-              "start": 1780271525575,
-              "uuid": "c28b2bfc-2019-4c5f-890f-27a1d7da78e8",
-              "stop": 1780271528976
+              "start": 1781472490620,
+              "uuid": "30e932a3-a7f4-4986-b70d-5982e49b8e6e",
+              "stop": 1781472494397
             }
           ],
           "attachments": [],
           "parameters": [],
           "name": "beforeEach hook",
-          "start": 1780271524300,
-          "uuid": "7adac9f0-22bf-4b77-b162-9acd2ed3e66d",
-          "stop": 1780271528976
+          "start": 1781472488280,
+          "uuid": "5d01a9a7-24c3-4446-84f4-e18bd202a88c",
+          "stop": 1781472494397
         }
       ],
       "attachments": [],
       "parameters": [],
       "name": "Before Hooks",
-      "start": 1780271524297,
-      "uuid": "8c493bab-a01c-4522-8785-5158034e632f",
-      "stop": 1780271528976
+      "start": 1781472488279,
+      "uuid": "bc2a4760-138d-4d21-9593-e9e1b07d4c22",
+      "stop": 1781472494397
     },
     {
       "status": "passed",
@@ -126,10 +126,10 @@
       "steps": [],
       "attachments": [],
       "parameters": [],
-      "start": 1780271528979,
-      "name": "Click getByRole('link', { name: 'Choose Robo Coaster Of Doom' })",
-      "uuid": "2624a137-5b17-4fb6-8ae6-2c745ce20678",
-      "stop": 1780271529274
+      "start": 1781472494403,
+      "name": "Click getByRole('link', { name: 'Choose Roba Swings' })",
+      "uuid": "234badfd-3df1-4d78-ad11-0577bcbf6bc0",
+      "stop": 1781472494559
     },
     {
       "status": "passed",
@@ -138,10 +138,10 @@
       "steps": [],
       "attachments": [],
       "parameters": [],
-      "start": 1780271529276,
+      "start": 1781472494562,
       "name": "Select option getByLabel('Amount of people')",
-      "uuid": "87062d28-3746-4a4e-b264-334f7de657f3",
-      "stop": 1780271529359
+      "uuid": "ad35d380-6841-4e67-858a-1e79611ba5b3",
+      "stop": 1781472494650
     },
     {
       "status": "passed",
@@ -150,34 +150,10 @@
       "steps": [],
       "attachments": [],
       "parameters": [],
-      "start": 1780271529361,
-      "name": "Click getByLabel('Height for person')",
-      "uuid": "3f1c4deb-2037-444b-81fc-1958ba2536de",
-      "stop": 1780271529432
-    },
-    {
-      "status": "passed",
-      "statusDetails": {},
-      "stage": "finished",
-      "steps": [],
-      "attachments": [],
-      "parameters": [],
-      "start": 1780271529435,
-      "name": "Fill \"139\" getByLabel('Height for person')",
-      "uuid": "a8fb62bd-860b-4987-a586-5d408f790486",
-      "stop": 1780271529482
-    },
-    {
-      "status": "passed",
-      "statusDetails": {},
-      "stage": "finished",
-      "steps": [],
-      "attachments": [],
-      "parameters": [],
-      "start": 1780271529483,
+      "start": 1781472494652,
       "name": "Click getByRole('button', { name: 'Next' })",
-      "uuid": "83c4e254-1f31-4069-a67f-892fdf4c3d5c",
-      "stop": 1780271529539
+      "uuid": "84036268-da65-4285-b2e9-b106f4d3dd1e",
+      "stop": 1781472494714
     },
     {
       "status": "passed",
@@ -186,10 +162,10 @@
       "steps": [],
       "attachments": [],
       "parameters": [],
-      "start": 1780271529544,
-      "name": "Expect \"toBeVisible\" getByText('Person 1 is too short for this ride')",
-      "uuid": "200079be-278e-47a1-b33e-710f8e5c9d56",
-      "stop": 1780271529562
+      "start": 1781472494721,
+      "name": "Expect \"toContain\"",
+      "uuid": "fc87c0b8-ad87-4284-becf-fcc882265f7e",
+      "stop": 1781472494722
     },
     {
       "status": "passed",
@@ -204,9 +180,9 @@
           "attachments": [],
           "parameters": [],
           "name": "Fixture \"page\"",
-          "start": 1780271529564,
-          "uuid": "0992888e-2464-4fa6-a8ad-fc145ba913e5",
-          "stop": 1780271529564
+          "start": 1781472494724,
+          "uuid": "c32816ec-62b4-499d-a894-c688f4050c02",
+          "stop": 1781472494724
         },
         {
           "status": "passed",
@@ -221,25 +197,25 @@
               "attachments": [],
               "parameters": [],
               "name": "Close context",
-              "start": 1780271529773,
-              "uuid": "7f494da9-b0c0-4d75-bc16-7bc52954c8df",
-              "stop": 1780271529934
+              "start": 1781472494908,
+              "uuid": "ad5618ed-6c05-4160-a6ed-04b9cfcab571",
+              "stop": 1781472495036
             }
           ],
           "attachments": [],
           "parameters": [],
           "name": "Fixture \"context\"",
-          "start": 1780271529565,
-          "uuid": "32bbd99d-fdc4-4c97-a7c2-91a82bebb5a5",
-          "stop": 1780271529934
+          "start": 1781472494724,
+          "uuid": "8a4302ed-6ae5-466b-866b-45e669f97799",
+          "stop": 1781472495036
         }
       ],
       "attachments": [],
       "parameters": [],
       "name": "After Hooks",
-      "start": 1780271529562,
-      "uuid": "01fa9001-f015-406e-9086-90d0b80e064c",
-      "stop": 1780271529942
+      "start": 1781472494722,
+      "uuid": "f33c626e-eb87-4404-9c7c-c8729dded2a4",
+      "stop": 1781472495046
     }
   ],
   "attachments": [],
@@ -250,22 +226,22 @@
     { "name": "package", "value": "robo-coasters-example.example.spec.js" },
     {
       "name": "_fallbackTestCaseId",
-      "value": "beec0d3d4b54d112e48aed642ed3a655"
+      "value": "08948adee7a23e6d83a5ec13e9a114e8"
     },
     {
       "name": "titlePath",
       "value": " > chromium > example.spec.js > user rides"
     },
     { "name": "host", "value": "PDM-01199" },
-    { "name": "thread", "value": "pid-16440-worker-1" },
+    { "name": "thread", "value": "pid-5056-worker-0" },
     { "name": "parentSuite", "value": "chromium" },
     { "name": "suite", "value": "example.spec.js" },
     { "name": "subSuite", "value": "user rides" }
   ],
   "links": [],
-  "start": 1780271524277,
-  "testCaseId": "f1f24d5d50f37ecf1fe45ecba9496efd",
-  "fullName": "example.spec.js:17:3",
+  "start": 1781472488279,
+  "testCaseId": "e6afd36bd0c6dca2dcd33b7b3755b7bf",
+  "fullName": "example.spec.js:9:3",
   "titlePath": ["robo-coasters-example", "example.spec.js", "user rides"],
-  "stop": 1780271529456
+  "stop": 1781472493143
 }

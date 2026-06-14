@@ -1,1 +1,63 @@
-{"uid":"b1a8273437954620fa374b796ffaacdd","name":"behaviors","children":[{"name":"user with minimum height should be allowed","uid":"7837f03d1fda39c8","parentUid":"b1a8273437954620fa374b796ffaacdd","status":"passed","time":{"start":1780271524233,"stop":1780271529650,"duration":5417},"flaky":false,"newFailed":false,"newPassed":false,"newBroken":false,"retriesCount":1,"retriesStatusChange":false,"parameters":["chromium"],"tags":[]},{"name":"user should be able to ride","uid":"294feed8031a924b","parentUid":"b1a8273437954620fa374b796ffaacdd","status":"passed","time":{"start":1780271524276,"stop":1780271530485,"duration":6209},"flaky":false,"newFailed":false,"newPassed":false,"newBroken":false,"retriesCount":1,"retriesStatusChange":false,"parameters":["chromium"],"tags":[]},{"name":"user above height should not be allowed","uid":"e3260e80599c033d","parentUid":"b1a8273437954620fa374b796ffaacdd","status":"passed","time":{"start":1780271524277,"stop":1780271529456,"duration":5179},"flaky":false,"newFailed":false,"newPassed":false,"newBroken":false,"retriesCount":1,"retriesStatusChange":false,"parameters":["chromium"],"tags":[]}]}
+{
+  "uid": "b1a8273437954620fa374b796ffaacdd",
+  "name": "behaviors",
+  "children": [
+    {
+      "name": "user with minimum height should be allowed",
+      "uid": "7837f03d1fda39c8",
+      "parentUid": "b1a8273437954620fa374b796ffaacdd",
+      "status": "passed",
+      "time": {
+        "start": 1780271524233,
+        "stop": 1780271529650,
+        "duration": 5417
+      },
+      "flaky": false,
+      "newFailed": false,
+      "newPassed": false,
+      "newBroken": false,
+      "retriesCount": 1,
+      "retriesStatusChange": false,
+      "parameters": ["chromium"],
+      "tags": []
+    },
+    {
+      "name": "user should be able to ride",
+      "uid": "294feed8031a924b",
+      "parentUid": "b1a8273437954620fa374b796ffaacdd",
+      "status": "passed",
+      "time": {
+        "start": 1780271524276,
+        "stop": 1780271530485,
+        "duration": 6209
+      },
+      "flaky": false,
+      "newFailed": false,
+      "newPassed": false,
+      "newBroken": false,
+      "retriesCount": 1,
+      "retriesStatusChange": false,
+      "parameters": ["chromium"],
+      "tags": []
+    },
+    {
+      "name": "user above height should not be allowed",
+      "uid": "e3260e80599c033d",
+      "parentUid": "b1a8273437954620fa374b796ffaacdd",
+      "status": "passed",
+      "time": {
+        "start": 1780271524277,
+        "stop": 1780271529456,
+        "duration": 5179
+      },
+      "flaky": false,
+      "newFailed": false,
+      "newPassed": false,
+      "newBroken": false,
+      "retriesCount": 1,
+      "retriesStatusChange": false,
+      "parameters": ["chromium"],
+      "tags": []
+    }
+  ]
+}

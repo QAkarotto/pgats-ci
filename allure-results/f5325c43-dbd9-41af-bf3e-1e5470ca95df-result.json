@@ -1,1 +1,271 @@
-{"uuid":"f5325c43-dbd9-41af-bf3e-1e5470ca95df","name":"user with minimum height should be allowed","historyId":"0bb3442276467209402e55a48ef9c802:5bd835b0d6b1d4ada3b9f0db936e82c8","status":"passed","statusDetails":{},"stage":"finished","steps":[{"status":"passed","statusDetails":{},"stage":"finished","steps":[{"status":"passed","statusDetails":{},"stage":"finished","steps":[{"status":"passed","statusDetails":{},"stage":"finished","steps":[{"status":"passed","statusDetails":{},"stage":"finished","steps":[],"attachments":[],"parameters":[],"name":"Launch browser","start":1780271524245,"uuid":"09886f64-81f8-4289-ae4a-b1232697bebc","stop":1780271524745}],"attachments":[],"parameters":[],"name":"Fixture \"browser\"","start":1780271524243,"uuid":"de14b307-1f3c-47f8-a3b1-3262a7e43cb3","stop":1780271524746},{"status":"passed","statusDetails":{},"stage":"finished","steps":[{"status":"passed","statusDetails":{},"stage":"finished","steps":[],"attachments":[],"parameters":[],"name":"Create context","start":1780271524751,"uuid":"4a7bae7a-5772-481b-a846-d5ec6f2fd133","stop":1780271524786}],"attachments":[],"parameters":[],"name":"Fixture \"context\"","start":1780271524749,"uuid":"2fffe27e-e234-469b-84ad-b2c73a547002","stop":1780271524787},{"status":"passed","statusDetails":{},"stage":"finished","steps":[{"status":"passed","statusDetails":{},"stage":"finished","steps":[],"attachments":[],"parameters":[],"name":"Create page","start":1780271524791,"uuid":"adff5aef-407a-4967-a757-a4536a5c2154","stop":1780271525571}],"attachments":[],"parameters":[],"name":"Fixture \"page\"","start":1780271524788,"uuid":"80b156f9-7168-40f5-b837-37ad56c48e0c","stop":1780271525572},{"status":"passed","statusDetails":{},"stage":"finished","steps":[],"attachments":[],"parameters":[],"name":"Navigate to \"/\"","start":1780271525574,"uuid":"3420cc6f-0a4f-4be8-9cb1-34a3215d4b4f","stop":1780271529410}],"attachments":[],"parameters":[],"name":"beforeEach hook","start":1780271524233,"uuid":"7e1d2e74-e4e0-4eeb-8175-d1170ca8975c","stop":1780271529410}],"attachments":[],"parameters":[],"name":"Before Hooks","start":1780271524232,"uuid":"ebb2a0f2-05ec-409a-a6a9-d64f8020eab1","stop":1780271529411},{"status":"passed","statusDetails":{},"stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1780271529415,"name":"Click getByRole('link', { name: 'Choose Robo Coaster Of Doom' })","uuid":"111639c3-3f48-4131-b69a-5338e66527f4","stop":1780271529741},{"status":"passed","statusDetails":{},"stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1780271529743,"name":"Select option getByLabel('Amount of people')","uuid":"f56285d9-0499-4679-8283-d05773ab19ca","stop":1780271529771},{"status":"passed","statusDetails":{},"stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1780271529772,"name":"Click getByLabel('Height for person')","uuid":"5003bed4-ab66-4d20-8511-2bc033e0fa87","stop":1780271529844},{"status":"passed","statusDetails":{},"stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1780271529846,"name":"Fill \"141\" getByLabel('Height for person')","uuid":"f9d8c0cf-d86b-4c74-9e73-55b9ae5865aa","stop":1780271529857},{"status":"passed","statusDetails":{},"stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1780271529859,"name":"Click getByRole('button', { name: 'Next' })","uuid":"d78112cc-eb6b-47ee-9b8d-650721c9aac5","stop":1780271529901},{"status":"passed","statusDetails":{},"stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1780271529906,"name":"Expect \"toBeVisible\" getByText('1 person (>= 141 cm) for the')","uuid":"8f52738a-42ae-4f48-9d7b-a4cb8cdc6956","stop":1780271529917},{"status":"passed","statusDetails":{},"stage":"finished","steps":[{"status":"passed","statusDetails":{},"stage":"finished","steps":[],"attachments":[],"parameters":[],"name":"Fixture \"page\"","start":1780271529919,"uuid":"7c0f4f50-38ce-4a34-9262-a56bf8a3418c","stop":1780271529919},{"status":"passed","statusDetails":{},"stage":"finished","steps":[{"status":"passed","statusDetails":{},"stage":"finished","steps":[],"attachments":[],"parameters":[],"name":"Close context","start":1780271530076,"uuid":"a96d553e-0b1a-46af-9105-6c85138375ea","stop":1780271530167}],"attachments":[],"parameters":[],"name":"Fixture \"context\"","start":1780271529920,"uuid":"4818f9f4-121a-479a-a388-898215a7b2da","stop":1780271530168}],"attachments":[],"parameters":[],"name":"After Hooks","start":1780271529918,"uuid":"53fad3b8-6b69-4949-8b9b-d3e5a8a758f6","stop":1780271530174}],"attachments":[],"parameters":[{"name":"Project","value":"chromium"}],"labels":[{"name":"language","value":"javascript"},{"name":"framework","value":"playwright"},{"name":"package","value":"robo-coasters-example.example.spec.js"},{"name":"_fallbackTestCaseId","value":"56c2f56acb1e4a89cea1da3c87761293"},{"name":"titlePath","value":" > chromium > example.spec.js > user rides"},{"name":"host","value":"PDM-01199"},{"name":"thread","value":"pid-16440-worker-2"},{"name":"parentSuite","value":"chromium"},{"name":"suite","value":"example.spec.js"},{"name":"subSuite","value":"user rides"}],"links":[],"start":1780271524233,"testCaseId":"0bb3442276467209402e55a48ef9c802","fullName":"example.spec.js:30:3","titlePath":["robo-coasters-example","example.spec.js","user rides"],"stop":1780271529650}
+{
+  "uuid": "f5325c43-dbd9-41af-bf3e-1e5470ca95df",
+  "name": "user with minimum height should be allowed",
+  "historyId": "0bb3442276467209402e55a48ef9c802:5bd835b0d6b1d4ada3b9f0db936e82c8",
+  "status": "passed",
+  "statusDetails": {},
+  "stage": "finished",
+  "steps": [
+    {
+      "status": "passed",
+      "statusDetails": {},
+      "stage": "finished",
+      "steps": [
+        {
+          "status": "passed",
+          "statusDetails": {},
+          "stage": "finished",
+          "steps": [
+            {
+              "status": "passed",
+              "statusDetails": {},
+              "stage": "finished",
+              "steps": [
+                {
+                  "status": "passed",
+                  "statusDetails": {},
+                  "stage": "finished",
+                  "steps": [],
+                  "attachments": [],
+                  "parameters": [],
+                  "name": "Launch browser",
+                  "start": 1780271524245,
+                  "uuid": "09886f64-81f8-4289-ae4a-b1232697bebc",
+                  "stop": 1780271524745
+                }
+              ],
+              "attachments": [],
+              "parameters": [],
+              "name": "Fixture \"browser\"",
+              "start": 1780271524243,
+              "uuid": "de14b307-1f3c-47f8-a3b1-3262a7e43cb3",
+              "stop": 1780271524746
+            },
+            {
+              "status": "passed",
+              "statusDetails": {},
+              "stage": "finished",
+              "steps": [
+                {
+                  "status": "passed",
+                  "statusDetails": {},
+                  "stage": "finished",
+                  "steps": [],
+                  "attachments": [],
+                  "parameters": [],
+                  "name": "Create context",
+                  "start": 1780271524751,
+                  "uuid": "4a7bae7a-5772-481b-a846-d5ec6f2fd133",
+                  "stop": 1780271524786
+                }
+              ],
+              "attachments": [],
+              "parameters": [],
+              "name": "Fixture \"context\"",
+              "start": 1780271524749,
+              "uuid": "2fffe27e-e234-469b-84ad-b2c73a547002",
+              "stop": 1780271524787
+            },
+            {
+              "status": "passed",
+              "statusDetails": {},
+              "stage": "finished",
+              "steps": [
+                {
+                  "status": "passed",
+                  "statusDetails": {},
+                  "stage": "finished",
+                  "steps": [],
+                  "attachments": [],
+                  "parameters": [],
+                  "name": "Create page",
+                  "start": 1780271524791,
+                  "uuid": "adff5aef-407a-4967-a757-a4536a5c2154",
+                  "stop": 1780271525571
+                }
+              ],
+              "attachments": [],
+              "parameters": [],
+              "name": "Fixture \"page\"",
+              "start": 1780271524788,
+              "uuid": "80b156f9-7168-40f5-b837-37ad56c48e0c",
+              "stop": 1780271525572
+            },
+            {
+              "status": "passed",
+              "statusDetails": {},
+              "stage": "finished",
+              "steps": [],
+              "attachments": [],
+              "parameters": [],
+              "name": "Navigate to \"/\"",
+              "start": 1780271525574,
+              "uuid": "3420cc6f-0a4f-4be8-9cb1-34a3215d4b4f",
+              "stop": 1780271529410
+            }
+          ],
+          "attachments": [],
+          "parameters": [],
+          "name": "beforeEach hook",
+          "start": 1780271524233,
+          "uuid": "7e1d2e74-e4e0-4eeb-8175-d1170ca8975c",
+          "stop": 1780271529410
+        }
+      ],
+      "attachments": [],
+      "parameters": [],
+      "name": "Before Hooks",
+      "start": 1780271524232,
+      "uuid": "ebb2a0f2-05ec-409a-a6a9-d64f8020eab1",
+      "stop": 1780271529411
+    },
+    {
+      "status": "passed",
+      "statusDetails": {},
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1780271529415,
+      "name": "Click getByRole('link', { name: 'Choose Robo Coaster Of Doom' })",
+      "uuid": "111639c3-3f48-4131-b69a-5338e66527f4",
+      "stop": 1780271529741
+    },
+    {
+      "status": "passed",
+      "statusDetails": {},
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1780271529743,
+      "name": "Select option getByLabel('Amount of people')",
+      "uuid": "f56285d9-0499-4679-8283-d05773ab19ca",
+      "stop": 1780271529771
+    },
+    {
+      "status": "passed",
+      "statusDetails": {},
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1780271529772,
+      "name": "Click getByLabel('Height for person')",
+      "uuid": "5003bed4-ab66-4d20-8511-2bc033e0fa87",
+      "stop": 1780271529844
+    },
+    {
+      "status": "passed",
+      "statusDetails": {},
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1780271529846,
+      "name": "Fill \"141\" getByLabel('Height for person')",
+      "uuid": "f9d8c0cf-d86b-4c74-9e73-55b9ae5865aa",
+      "stop": 1780271529857
+    },
+    {
+      "status": "passed",
+      "statusDetails": {},
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1780271529859,
+      "name": "Click getByRole('button', { name: 'Next' })",
+      "uuid": "d78112cc-eb6b-47ee-9b8d-650721c9aac5",
+      "stop": 1780271529901
+    },
+    {
+      "status": "passed",
+      "statusDetails": {},
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1780271529906,
+      "name": "Expect \"toBeVisible\" getByText('1 person (>= 141 cm) for the')",
+      "uuid": "8f52738a-42ae-4f48-9d7b-a4cb8cdc6956",
+      "stop": 1780271529917
+    },
+    {
+      "status": "passed",
+      "statusDetails": {},
+      "stage": "finished",
+      "steps": [
+        {
+          "status": "passed",
+          "statusDetails": {},
+          "stage": "finished",
+          "steps": [],
+          "attachments": [],
+          "parameters": [],
+          "name": "Fixture \"page\"",
+          "start": 1780271529919,
+          "uuid": "7c0f4f50-38ce-4a34-9262-a56bf8a3418c",
+          "stop": 1780271529919
+        },
+        {
+          "status": "passed",
+          "statusDetails": {},
+          "stage": "finished",
+          "steps": [
+            {
+              "status": "passed",
+              "statusDetails": {},
+              "stage": "finished",
+              "steps": [],
+              "attachments": [],
+              "parameters": [],
+              "name": "Close context",
+              "start": 1780271530076,
+              "uuid": "a96d553e-0b1a-46af-9105-6c85138375ea",
+              "stop": 1780271530167
+            }
+          ],
+          "attachments": [],
+          "parameters": [],
+          "name": "Fixture \"context\"",
+          "start": 1780271529920,
+          "uuid": "4818f9f4-121a-479a-a388-898215a7b2da",
+          "stop": 1780271530168
+        }
+      ],
+      "attachments": [],
+      "parameters": [],
+      "name": "After Hooks",
+      "start": 1780271529918,
+      "uuid": "53fad3b8-6b69-4949-8b9b-d3e5a8a758f6",
+      "stop": 1780271530174
+    }
+  ],
+  "attachments": [],
+  "parameters": [{ "name": "Project", "value": "chromium" }],
+  "labels": [
+    { "name": "language", "value": "javascript" },
+    { "name": "framework", "value": "playwright" },
+    { "name": "package", "value": "robo-coasters-example.example.spec.js" },
+    {
+      "name": "_fallbackTestCaseId",
+      "value": "56c2f56acb1e4a89cea1da3c87761293"
+    },
+    {
+      "name": "titlePath",
+      "value": " > chromium > example.spec.js > user rides"
+    },
+    { "name": "host", "value": "PDM-01199" },
+    { "name": "thread", "value": "pid-16440-worker-2" },
+    { "name": "parentSuite", "value": "chromium" },
+    { "name": "suite", "value": "example.spec.js" },
+    { "name": "subSuite", "value": "user rides" }
+  ],
+  "links": [],
+  "start": 1780271524233,
+  "testCaseId": "0bb3442276467209402e55a48ef9c802",
+  "fullName": "example.spec.js:30:3",
+  "titlePath": ["robo-coasters-example", "example.spec.js", "user rides"],
+  "stop": 1780271529650
+}
