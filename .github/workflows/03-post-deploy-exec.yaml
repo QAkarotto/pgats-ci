@@ -22,7 +22,7 @@ jobs:
           - self-hosted
           - windows
         
-        if: ${{ github.event.workfow_run.conclusion == sucess}}
+        if: ${{ github.event.workfow_run.conclusion == success }}
           
 
         # passos do job
