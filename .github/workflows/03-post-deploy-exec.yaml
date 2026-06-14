@@ -1,16 +1,17 @@
-# CI de Nível 02 - Disparo execução agendada
+# CI de Nível 03 - Disparo após a conclusão de outra pipeline
 
 # nome da pipeline
-name: "Scheduled Execution"
+name: "Execução por Deploy"
 
 # gatilhos / triggers - regras de disparo
 # gatilho manual = workflow_dispatch
 # gatilho agendado = schedule
+# gatilho por conclusão de outra pipeline = workflow_run
 on:
-  schedule:
-  # cronograma de execução
-  # 1- minuto, 2 - hora, 3 - dia do mês, 4 - mês, 5 - dia da semana (quando não houver a informação, adiciona o asterísco)
-    - cron: '*/6 * * * *' #nesse caso ficou programado pra rodar de 6 em 6 minutos
+    workflow_run:
+      workflows: ['Execução Manual']
+      types: 
+        - completed
     
 #tarefas dentro da pipeline = jobs
 jobs:
