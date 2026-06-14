@@ -13,7 +13,9 @@ jobs:
     #nome do job
     e2e-tests:
         # maquina onde o job vai rodar
-        runs-on: ubuntu-latest
+        runs-on: 
+          - self-hosted
+          - windows
 
         # passos do job
         steps:
