@@ -1,0 +1,86 @@
+# CI de Nível 02 - Disparo Execução Manual
+
+# nome da pipeline
+name: "Execução Agendada"
+
+# gatilhos / triggers - regras de disparo
+# gatilho agendado = workflow_dispatch
+on:
+    schedule:
+      #cronograma de execução
+      #1- minutos, 2-hora, 3-dia do mês, 4-mês, 5-dia da semana (quando não a informação substitui por asterísco)
+      - cron: '0 0 * * 0' #Rodará apenas no dia e horário especificado
+    
+#tarefas dentro da pipeline = jobs
+jobs:
+    #nome do job
+    e2e-tests:
+        # maquina onde o job vai rodar
+        runs-on: 
+          - self-hosted
+          - windows
+
+        # passos do job
+        steps:
+            # clone do projeto
+            - uses: actions/checkout@v4
+
+            # instalção do node
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 22.x
+
+            # instalação do Yarn
+            - name: Instalando Yarn
+              run: npm install -g yarn
+            
+            #   instalação das dependências
+            - name: Instalando dependências
+              run: yarn
+            
+            # instalação dos Browsers do Playwright
+            - name: Instalando Browsers do Playwright
+              run: yarn playwright install
+            
+            # executar os testes e2e
+            - name: Executando testes e2e
+              run: yarn run e2e
+
+            #
+            - name: Check Allure version
+              run: npx allure --version  
+
+            # irá gerar o relatório na pipeline
+            - name: Gerar relatório Allure
+              if: always()
+              run: |
+              
+            - name: Install Allure CLI
+              run: npm install -g allure-commandline
+
+            - name: Generate Allure Report
+              run: allure generate allure-results --clean -o allure-report  
+            
+            # só consegui abrir o relatório é através do bash: allure open allure-report
+            - name: Upload Allure Report
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                name: allure-report
+                path: allure-report
+                retention-days: 7
+                
+            #  Configurar o dorny/test-reporter
+            - name: Publicar resultados dos testes
+              if: always()
+              uses: dorny/test-reporter@v3
+              with:
+                name: Playwright Tests
+                path: results.xml
+                reporter: java-junit
+
+
+
+
+
+
