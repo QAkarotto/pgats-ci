@@ -10,7 +10,7 @@ on:
   schedule:
   # cronograma de execução
   # 1- minuto, 2 - hora, 3 - dia do mês, 4 - mês, 5 - dia da semana (quando não houver a informação, adiciona o asterísco)
-    - cron: '*/6 * * * *' #nesse caso ficou programado pra rodar de 6 em 6 minutos
+    - cron: '*/10 * * * *' #nesse caso ficou programado pra rodar de 6 em 6 minutos
     
 #tarefas dentro da pipeline = jobs
 jobs:
