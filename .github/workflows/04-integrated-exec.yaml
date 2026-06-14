@@ -1,86 +1,102 @@
-# CI de Nível 04 - Pipeline Integrada ao build do código
+# CI de Nível 04 - Pipeline Integrada ao Build do Código
 
 # nome da pipeline
-name: "Execução Integrada"
+name: 'N4 -Execução Integrada'
 
 # gatilhos / triggers - regras de disparo
 # gatilho manual = workflow_dispatch
 # gatilho agendado = schedule
 # gatilho por conclusão de outra pipeline = workflow_run
+
 on:
-    workflow_dispatch
+  workflow_dispatch:
+
+  push:
+    branches:
+      - master
 #tarefas dentro da pipeline = jobs
+
 jobs:
-    #nome do job
-    inspecao:
-        # maquina onde o job vai rodar
-        runs-on: ubuntu-latest
+  #nome do job
+  inspecao:
+    # maquina onde o job vai rodar
+    runs-on: ubuntu-latest
 
-        # passos do job
-        steps:
-            # clone do projeto
-            - uses: actions/checkout@v4
+    # passos do job
+    steps:
+      # clone do projeto
+      - uses: actions/checkout@v4
 
-            # instalção do node
-            - uses: actions/setup-node@v4
-              with:
-                  node-version: latest
+      # instalção do node
+      - uses: actions/setup-node@v4
+        with:
+          node-version: latest
 
-            # instalação do Yarn
-            - name: Instalando Yarn
-              run: npm install -g yarn
-            
-            # instalação das dependências
-            - name: Instalando dependências
-              run: yarn
+      # instalação do Yarn
+      - name: Instalando Yarn
+        run: npm install -g yarn
 
-            # inspeciona  fazendo uma validação
-            - name: Inspeção de código
-              run: yarn lint
-            
-            # instalação dos Browsers do Playwright
-            - name: Instalando Browsers do Playwright
-              run: yarn playwright install
-            
-            # executar os testes e2e
-            - name: Executando testes e2e
-              run: yarn run e2e
+      # instalação das dependências
+      - name: Instalando dependências
+        run: yarn
 
-            #
-            - name: Check Allure version
-              run: npx allure --version  
+      - name: Inspeção de Código
+        run: yarn lint
 
-            # irá gerar o relatório na pipeline
-            - name: Gerar relatório Allure
-              if: always()
-              run: |
-              
-            - name: Install Allure CLI
-              run: npm install -g allure-commandline
+  unidade:
+    runs-on: ubuntu-latest
+    needs: [inspecao]
 
-            - name: Generate Allure Report
-              run: allure generate allure-results --clean -o allure-report  
-            
-            # só consegui abrir o relatório é através do bash: allure open allure-report
-            - name: Upload Allure Report
-              if: always()
-              uses: actions/upload-artifact@v4
-              with:
-                name: allure-report
-                path: allure-report
-                retention-days: 7
-                
-            #  Configurar o dorny/test-reporter
-            - name: Publicar resultados dos testes
-              if: always()
-              uses: dorny/test-reporter@v3
-              with:
-                name: Playwright Tests
-                path: results.xml
-                reporter: java-junit
+    steps:
+      - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: latest
 
+      - name: Instalando Yarn
+        run: npm install -g yarn
 
+      - name: Instalando dependências
+        run: yarn
 
+      - name: Rodando testes unitários
+        run: yarn run test
 
+  e2e-tests:
+    runs-on: ubuntu-latest
+    needs: [inspecao]
 
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: latest
+
+      - name: Instalando Yarn
+        run: npm install -g yarn
+
+      - name: Instalando dependências
+        run: yarn
+
+      - name: Instalando Browsers do Playwright
+        run: yarn playwright install
+
+      - name: Executando testes E2E
+        run: yarn run e2e
+
+      - name: Salvando relatórios de testes
+        uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          path: ./playwright-report
+          name: Relatório de Testes E2E
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [unidade, e2e-tests]
+
+    steps:
+      - name: Simulação de Deploy
+        run: echo 'Deploy sendo realizado...'
