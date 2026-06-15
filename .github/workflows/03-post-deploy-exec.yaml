@@ -14,6 +14,10 @@ on:
     types:
       - completed
 
+    push:
+      branches:
+        - master
+
 #tarefas dentro da pipeline = jobs
 
 jobs:
